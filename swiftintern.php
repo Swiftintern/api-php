@@ -67,8 +67,12 @@ class Swiftintern {
     	}
     }
 
+    public function build_url($param) {
+    	return $this->baseUrl. $param .".json";
+    }
+
     public function opportunityList() {
-        $response = $this->curlGet($this->baseUrl."home.json");
+        $response = $this->curlGet($this->build_url("home"));
         return $response;
     }
 }
