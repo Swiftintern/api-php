@@ -67,12 +67,28 @@ class Swiftintern {
     	}
     }
 
+    /**
+     * Builds the complete url to send request to
+     * @param  string $param parameter to be added in url
+     * @return string        the complete url
+     */
     public function build_url($param) {
     	return $this->baseUrl. $param .".json";
     }
 
     public function opportunityList() {
         $response = $this->curlGet($this->build_url("home"));
+        return $response;
+    }
+
+    /**
+     * Details of opportunity
+     * @param  [type] $type [description]
+     * @param  [type] $id   [description]
+     * @return [type]       [description]
+     */
+    public function opportunityDetails($type, $id) {
+        $response = $this->curlGet($this->build_url("{$type}/details/show/{$id}"));
         return $response;
     }
 }
